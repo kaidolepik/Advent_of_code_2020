@@ -17,7 +17,7 @@ input %>%
     filter(between(byr, 1920, 2002),
            between(iyr, 2010, 2020),
            between(eyr, 2020, 2030),
-           grepl("cm", hgt) & between(substr(hgt, 1, nchar(hgt)-2), 150, 193) | grepl("in", hgt) & between(substr(hgt, 1, nchar(hgt)-2), 59, 76),
+           grepl("^\\d+cm$", hgt) & between(substr(hgt, 1, nchar(hgt)-2), 150, 193) | grepl("^\\d+in$", hgt) & between(substr(hgt, 1, nchar(hgt)-2), 59, 76),
            grepl("^#[0-9a-f]{6}$", hcl),
            grepl("^(amb|blu|brn|gry|grn|hzl|oth)$", ecl),
            grepl("^\\d{9}$", pid)) %>%
