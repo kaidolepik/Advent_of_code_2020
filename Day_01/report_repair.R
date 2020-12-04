@@ -1,4 +1,3 @@
-
 product_of_N_expenses_with_sum <- function(expenses, N = 2, expense_sum = 2020) {
     expense_pairs <- combn(expenses, N)
     

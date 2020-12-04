@@ -18,5 +18,4 @@ input <- scan("/Users/kaidolepik/Desktop/Project/Advent_of_code/Day_03/input.txt
 N_trees(input)
 
 # Day 3.2
-prod(c(N_trees(input, 1, 1), N_trees(input, 3, 1), N_trees(input, 5, 1), 
-       N_trees(input, 7, 1), N_trees(input, 1, 2)))
+prod(c(N_trees(input, 1, 1), N_trees(input, 3, 1), N_trees(input, 5, 1), N_trees(input, 7, 1), N_trees(input, 1, 2)))
