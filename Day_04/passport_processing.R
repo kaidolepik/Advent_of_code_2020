@@ -1,6 +1,6 @@
 library(tidyverse)
 
-input <- read_file("/Users/kaidolepik/Desktop/Project/Advent_of_code/Day_04/input.txt") %>%
+input <- read_file("Day_04/input.txt") %>%
     str_replace_all(c("(?<!\n)\n(?!(\n|$))" = " ", "\n\n" = "\n")) %>%
     data.table::fread(fill = TRUE, na.strings = "", header = FALSE) %>%
     rownames_to_column("id") %>%

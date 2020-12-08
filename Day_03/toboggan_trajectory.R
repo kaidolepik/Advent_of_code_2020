@@ -9,7 +9,7 @@ N_trees <- function(input, right = 3, down = 1) {
     sum(as.matrix(input)[as.matrix(trajectory[, c("row", "col")])] == "#")
 }
 
-input <- scan("/Users/kaidolepik/Desktop/Project/Advent_of_code/Day_03/input.txt", what = "character") %>%
+input <- scan("Day_03/input.txt", what = "character") %>%
     str_split(pattern = "") %>%
     lapply(as.data.frame.list) %>%
     data.table::rbindlist()

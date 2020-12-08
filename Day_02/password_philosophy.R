@@ -1,6 +1,6 @@
 library(tidyverse)
 
-input <- read.table(text = gsub("(-|: )", " ", readLines("/Users/kaidolepik/Desktop/Project/Advent_of_code/Day_02/input.txt")),
+input <- read.table(text = gsub("(-|: )", " ", readLines("Day_02/input.txt")),
                     col.names=c("min", "max", "letter", "password"), stringsAsFactors = FALSE)
 
 # Day 1

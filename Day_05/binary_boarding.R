@@ -1,6 +1,6 @@
 library(tidyverse)
 
-input <- read_table("/Users/kaidolepik/Desktop/Project/Advent_of_code/Day_05/input.txt", col_names = "seat") %>%
+input <- read_table("Day_05/input.txt", col_names = "seat") %>%
     separate(seat, c("row", "col"), sep = 7) %>%
     mutate(row = strtoi(str_replace_all(row, c("F" = "0", "B" = "1")), base = 2),
            col = strtoi(str_replace_all(col, c("L" = "0", "R" = "1")), base = 2),
