@@ -22,4 +22,3 @@ lapply(paths, function(path) {
 }) %>%
     unlist() %>%
     sum()
-    
