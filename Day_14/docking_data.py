@@ -30,10 +30,7 @@ def initialize_docking(program_version):
             if command.startswith("mask"):
                 mask = value
             else:
-                if program_version == 1:
-                    docking = docking_program_1(docking, command, value, mask)
-                elif program_version == 2:
-                    docking = docking_program_2(docking, command, value, mask)
+                docking = docking_program_1(docking, command, value, mask) if program_version == 1 else docking_program_2(docking, command, value, mask)
 
     return sum(docking.values())
 
