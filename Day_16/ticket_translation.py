@@ -4,7 +4,7 @@ import numpy as np
 
 def match_ticket_fields(tickets, fields):
     valid_tickets = np.array([ticket for ticket in tickets if all(any(value in criteria for criteria in fields.values()) for value in ticket)], dtype = int)
-    
+
     field_to_col = defaultdict(int)
     while len(field_to_col) != len(fields):
         for col in [i for i in range(len(fields)) if i not in field_to_col.values()]:
@@ -14,6 +14,7 @@ def match_ticket_fields(tickets, fields):
                 field_to_col[OK_fields[0]] = col
 
     return field_to_col
+
 
 with open("Day_16/input.txt", "r") as fin:
     input = fin.read().strip().split("\n\n")
@@ -25,7 +26,6 @@ with open("Day_16/input.txt", "r") as fin:
 
     my_ticket = [int(value) for value in input[1].split("\n")[1].split(",")] 
     tickets = [[int(value) for value in ticket.split(",")] for ticket in input[2].split("\n")[1:]]
-
 
 # Day 16.1
 print(sum([value for ticket in tickets for value in ticket if not any(value in criteria for criteria in fields.values())]))
