@@ -7,8 +7,8 @@ def active_cubes(input, ndim, cycles):
 
     pocket = np.full([n + 2*cycles]*ndim, ".", dtype = str)
     pocket[tuple([slice(center, center+1)]*(ndim-2) + [slice(cycles, cycles+n)]*2)] = input
-
-    neighbours = [np.array(neighbour) for neighbour in itertools.product([-1, 0, 1], repeat = ndim) if neighbour != tuple([0]*ndim)]
+    
+    neighbours = [neighbour for neighbour in itertools.product([-1, 0, 1], repeat = ndim) if neighbour != tuple([0]*ndim)]
 
     for _ in range(cycles):
         counts = sum(np.roll(pocket, neighbour, axis = tuple(range(ndim))) == "#" for neighbour in neighbours)
