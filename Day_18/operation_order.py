@@ -2,12 +2,10 @@ import operator
 import re
 import math
 
-operators = { "+": operator.add, "*": operator.mul }
-
 def evaluate_basic(ops, nrs):
-    total = operators[ops[0]](nrs[0], nrs[1])
+    total = nrs[0]+nrs[1] if ops[0] == "+" else nrs[0]*nrs[1]
     for op, nr in zip(ops[1:], nrs[2:]):
-        total = operators[op](total, nr)
+        total = total+nr if op == "+" else total*nr
     
     return total
 
@@ -20,7 +18,7 @@ def evaluate_advanced(ops, nrs):
     return math.prod(nrs)
 
 def evaluate(expression, evaluate_func):
-    ops = [op for op in re.split(r"\d", expression) if op != ""]
+    ops = [op for op in expression if op in "+*"]
     nrs = [int(nr) for nr in re.split("[*+]", expression)]
 
     return str(evaluate_func(ops, nrs))
