@@ -1,0 +1,38 @@
+import itertools
+import re
+
+def match_rules(rules, key):
+    matches = []
+    for rule in rules[key]:
+        key_matches = [""]
+        for key in rule:
+            if key.isdigit():
+                key_matches = [x + y for x, y in itertools.product(key_matches, match_rules(rules, key))]
+            else:
+                return [key]
+        matches += key_matches
+
+    return matches
+
+def match_messages(messages, rules, max_loops_42 = 10, max_loops_31 = 10):
+    rule_42 = match_rules(rules, "42")
+    rule_31 = match_rules(rules, "31")
+
+    matched_messages = []
+    for message in messages:
+        for i42, i31 in [(i + j, i) for i in range(1, max_loops_31 + 1) for j in range(1, max_loops_42 + 1)]:
+            if re.match(r"^(" + "|".join(rule_42) + "){" + str(i42) + "}" + "(" + "|".join(rule_31) + "){" + str(i31) + "}$", message):
+                matched_messages.append(message)
+                break
+
+    return matched_messages
+
+
+with open("Day_19/input.txt", "r") as fin:
+    input = fin.read().replace('"', "").split("\n\n")
+
+    rules = { line.split(": ")[0]: [rule.split() for rule in line.split(": ")[1].split(" | ")] for line in input[0].strip().split("\n") }
+    messages = input[1].strip().split()
+
+print(len(set(messages).intersection(set(match_rules(rules, "0"))))) # Day 19.1
+print(len(match_messages(messages, rules))) # Day 19.2
