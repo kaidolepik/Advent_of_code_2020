@@ -14,15 +14,11 @@ def match_rules(rules, key):
 def match_messages(messages, rules, max_loops_42 = 10, max_loops_31 = 10):
     rule_42 = match_rules(rules, "42")
     rule_31 = match_rules(rules, "31")
+    
+    regex = lambda i42, i31: r"^(" + "|".join(rule_42) + "){" + str(i42) + "}" + "(" + "|".join(rule_31) + "){" + str(i31) + "}$"
+    loop_options = [(i + j, i) for i in range(1, max_loops_31 + 1) for j in range(1, max_loops_42 + 1)]
 
-    matched_messages = []
-    for message in messages:
-        for i42, i31 in [(i + j, i) for i in range(1, max_loops_31 + 1) for j in range(1, max_loops_42 + 1)]:
-            if re.match(r"^(" + "|".join(rule_42) + "){" + str(i42) + "}" + "(" + "|".join(rule_31) + "){" + str(i31) + "}$", message):
-                matched_messages.append(message)
-                break
-
-    return matched_messages
+    return [message for message in messages if any(re.match(regex(i42, i31), message) for i42, i31 in loop_options)]
 
 
 with open("Day_19/input.txt", "r") as fin:
