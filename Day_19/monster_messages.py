@@ -6,10 +6,7 @@ def match_rules(rules, key):
     for rule in rules[key]:
         key_matches = [""]
         for key in rule:
-            if key.isdigit():
-                key_matches = [x + y for x, y in itertools.product(key_matches, match_rules(rules, key))]
-            else:
-                return [key]
+            key_matches = [x + y for x, y in itertools.product(key_matches, match_rules(rules, key))] if key.isdigit() else [key]
         matches += key_matches
 
     return matches
@@ -35,4 +32,4 @@ with open("Day_19/input.txt", "r") as fin:
     messages = input[1].strip().split()
 
 print(len(set(messages).intersection(set(match_rules(rules, "0"))))) # Day 19.1
-print(len(match_messages(messages, rules))) # Day 19.2
+print(len(match_messages(messages, rules))) # Day 19.2 (also solves Day 19.1 with "match_messages(messages, rules, 1, 1)")
