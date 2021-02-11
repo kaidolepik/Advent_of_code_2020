@@ -72,12 +72,12 @@ def orient_to_monsters(board, monster_shape):
 with open("Day_20/input.txt", "r") as fin:
     tiles = [Tile(tile_info) for tile_info in fin.read().split("\n\n")]
 
-# 20.1
+# Day 20.1
 set_neighbors(tiles)
 corners = [tile for tile in tiles if sum(len(neighbor) for neighbor in tile.neighbors) == 2] # Corners have 2 neighbors
 print(np.prod([corner.ID for corner in corners]))
 
-# 20.2
+# Day 20.2
 with open("Day_20/pattern.txt", "r") as fin:
     monster_shape = [line for line in fin.read().replace(" ", ".").split("\n")]
 

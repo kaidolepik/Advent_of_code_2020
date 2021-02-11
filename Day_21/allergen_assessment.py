@@ -13,12 +13,10 @@ def match_food_items(foods):
 
     for food in foods:
         ingredients, allergens = [items.split(" ") for items in food]
-
         for allergen in allergens:
             allergenDB[allergen] = set(ingredients) if allergen not in allergenDB else allergenDB[allergen].intersection(ingredients)
             if len(allergenDB[allergen]) == 1:
-                update_allergens(allergenDB, allergen)
-                
+                update_allergens(allergenDB, allergen) 
         for ingredient in ingredients:
             ingredientDB[ingredient] += 1
     
