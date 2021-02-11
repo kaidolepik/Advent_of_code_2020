@@ -18,7 +18,7 @@ class Tile:
         self.image = np.array(list(zip(*reversed(self.image))), dtype = "<U1") # Clockwise rotation of the image
         self.neighbors.rotate()
 
-    def flip(self):
+    def transpose(self):
         self.image = self.image.transpose()
         self.neighbors.reverse()
 
@@ -34,10 +34,10 @@ def match_tile(tile, left, top):
     for _ in range(2):
         for _ in range(4):
             # If (there is no left neighbor or the left edge equals value) and (there is no top neighbor or the top edge equals value)
-            if ((len(tile.neighbors[3]) == 0 and len(left) == 0) or (len(left) != 0 and np.all(tile.edges()[3][::-1] == left))) and ((len(tile.neighbors[0]) == 0 and len(top) == 0) or (len(top) != 0 and np.all(tile.edges()[0][::-1] == top))):
+            if ((not tile.neighbors[3] and len(left) == 0) or (len(left) != 0 and np.all(tile.edges()[3][::-1] == left))) and ((not tile.neighbors[0] and len(top) == 0) or (len(top) != 0 and np.all(tile.edges()[0][::-1] == top))):
                 return tile
             tile.rotate()
-        tile.flip()
+        tile.transpose()
 
 def build_image_board(tiles):
     N = int(np.sqrt(len(tiles)))
