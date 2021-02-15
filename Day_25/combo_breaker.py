@@ -2,6 +2,7 @@ def key_operation(key_value, subject_number):
     return (key_value * subject_number) % 20201227
 
 def determine_encryption_key(subject_number, loop_size, key_value = 1):
+    # The same as pow(subject_number, loop_size, 20201227)
     for _ in range(loop_size):
         key_value = key_operation(key_value, subject_number)
 
