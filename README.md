@@ -1,6 +1,8 @@
 # Advent_of_code_2020
 
-Participated in [Advent of code](https://adventofcode.com/) for the first time. Used base R, matrix calculations and tidyverse in the beginning; later switched to Python for easier handling of data structures and algorithmics, occasionally making heavy use of numpy.
+Participated in [Advent of code](https://adventofcode.com/) for the first time. Used base R, matrix calculations and tidyverse in the beginning; later switched to Python for easier handling of data structures and algorithms, occasionally making use of numpy.
+
+![Advent of Code 2020 Calendar](images/AoC_calendar_2020.png)
 
 ### Day 1
 
