@@ -26,7 +26,7 @@ Converting to binary is easy with `strtoi`.
 
 ### Day 6
 
-Pure tidyverse; focused on parsing the input to allow easy filtering.
+Pure tidyverse; focused on parsing the input to facilitate filtering.
 
 ### Day 7
 
@@ -34,7 +34,7 @@ Read the data into a graph, found all possible paths from the starting node (seq
 
 ### Day 8
 
-Implementing the game logic seemed more straightforward in Python.
+Transitioned from R to Python to make the implementation of the puzzle logic clearer.
 
 ### Day 9
 
@@ -94,7 +94,7 @@ A straightforward recursive algorithm to implement the puzzle logic.
 
 ### Day 23
 
-Used an abstract linked list implemented using a dictionary – each number represents a key in the dictionary whose value is the next number in the sequence (in hindsight, could have simply used an array where the N-th element contains the number in the sequence following N). Updating the sequence was thus a constant time operation.
+Used an abstract linked list implemented using a dictionary – each number represents a key in the dictionary whose value is the next number in the sequence (in hindsight, could have simply used an array where the N-th element contains the number in the sequence following the number N). Updating the sequence was thus a constant time operation.
 
 ### Day 24
 
